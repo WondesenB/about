@@ -19,7 +19,7 @@ Results
 
 [video](https://youtu.be/GjHWIn5KZLc)
 
-[![video](/videos//thumnail-BO.png)](https://youtu.be/GjHWIn5KZLc)
+[![video](http://wondesenb.github.io/about/thumnails/thumnail-BO.png)](https://youtu.be/GjHWIn5KZLc)
 
 
 Citation

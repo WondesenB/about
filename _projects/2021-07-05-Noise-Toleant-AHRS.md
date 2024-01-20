@@ -19,13 +19,13 @@ Results
 
 [video 1](https://youtu.be/k1rQOr5Ajhw)
 
-[![video](/videos//thumnail-ahrs-sw-view.png)](https://youtu.be/k1rQOr5Ajhw)
+[![video](http://wondesenb.github.io/about/thumnails/thumnail-ahrs-sw-view.png)](https://youtu.be/k1rQOr5Ajhw)
 
  - Qgroundcontrol Visualization using MAVLINK
 
 [video 2](https://youtu.be/KnzcqsosoNA)
 
-[![video](/videos//thumnail-ahrs-qgctrl-view.png)](https://youtu.be/KnzcqsosoNA)
+[![video](http://wondesenb.github.io/about/thumnails/thumnail-ahrs-qgctrl-view.png)](https://youtu.be/KnzcqsosoNA)
 
 <!-- <iframe width="960" height="540" src="https://youtu.be/D8bIGT2S5dI" frameborder="0" allowfullscreen></iframe> -->
 

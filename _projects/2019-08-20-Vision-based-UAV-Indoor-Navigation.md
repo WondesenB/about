@@ -12,11 +12,11 @@ location: "Busan, Korea"
 
 Design
 ======
-![image](/images/drone-design.png)
+![image](http://wondesenb.github.io/about/images/drone-design.png)
 
 Schematic
 ======
-![image](/images/AI-based-UAV-Indoor-Nav-block-diagram.png)
+![image](http://wondesenb.github.io/about/images/AI-based-UAV-Indoor-Nav-block-diagram.png)
 
 Source code
 =======
@@ -28,5 +28,5 @@ Indoor autonomous waypoints navigation using stereo camera and LiDAR sensor with
 
 [video](https://youtu.be/UL4Bj95_Dk8)
 
-[![video](/videos//thumnail-ai.png)](https://youtu.be/UL4Bj95_Dk8)
+[![video](http://wondesenb.github.io/about/thumnails/thumnail-ai.png)](https://youtu.be/UL4Bj95_Dk8)
 <!-- <iframe width="960" height="540" src="https://youtu.be/D8bIGT2S5dI" frameborder="0" allowfullscreen></iframe> -->

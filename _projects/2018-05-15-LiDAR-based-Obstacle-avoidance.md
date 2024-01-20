@@ -16,7 +16,7 @@ The project focuses on implementing drone obstacle avoidance using lidar sensor 
 
 Experimental Setup
 ======
-![image](/images/experimental-setup.png)
+![image](http://wondesenb.github.io/about/images/experimental-setup.png)
 
 Source Codes
 ======
@@ -28,5 +28,5 @@ Results
 
 [video](https://youtu.be/D8bIGT2S5dI)
 
-[![video](/videos//thumnail.png)](https://youtu.be/D8bIGT2S5dI)
+[![video](http://wondesenb.github.io/about/thumnails/thumnail.png)](https://youtu.be/D8bIGT2S5dI)
 <!-- <iframe width="960" height="540" src="https://youtu.be/D8bIGT2S5dI" frameborder="0" allowfullscreen></iframe> -->
