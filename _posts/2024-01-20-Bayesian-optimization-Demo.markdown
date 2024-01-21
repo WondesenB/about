@@ -72,7 +72,7 @@ where
 
 MATLAB implementation:
 {%highlight MATLAB %}
-function EI = aqufun(ytrain, mu, stdv,xi)
+function EI = aqufun(ytrain, mu, stdv,xi, i)
     % Exploration-exploitation parameter (greek letter, xi)
     % High xi = more exploration
     % Low xi = more exploitation (can be < 0)
