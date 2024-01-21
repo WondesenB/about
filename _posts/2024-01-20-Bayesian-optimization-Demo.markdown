@@ -72,7 +72,7 @@ where
 
 MATLAB implementation:
 {%highlight MATLAB %}
-function EI = aqufun(ytrain, mu, stdv,i)
+function [EI,phi,PHI,z,idx] = aqufun(ytrain, mu, stdv,i)
     % Exploration-exploitation parameter (greek letter, xi)
     % High xi = more exploration
     % Low xi = more exploitation (can be < 0)
@@ -154,7 +154,7 @@ set(gcf, 'WindowState', 'maximized');
 for i=1:10
     [mu,cov,stdv]=GP(xtrain,ytrain,xtest,l,sig_var,0);
     stdv = real(stdv);
-    EI = aqufun(ytrain, mu, stdv,i);
+    [EI, phi, PHI, z, idx] = aqufun(ytrain, mu, stdv,i);
     [eimax,posEI] = max(EI);
     xEI = xtest(posEI,:);
     xtrain(end+1,:) = xEI;               % Save xEI as next
@@ -285,3 +285,5 @@ for i=1:10
 end
 
 {% endhighlight %}
+
+[full code](http://wondesenb.github.io/about/scripts/BayesianTest.m)
