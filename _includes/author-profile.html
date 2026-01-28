@@ -42,7 +42,7 @@
       </a>
     {% endif %}
     {% if author.github %}
-      <a href="https://github.com/{{ author.github }}" class="author-profile__link" aria-label="GitHub">
+      <a href="{% if author.github contains '://' %}{{ author.github }}{% else %}https://github.com/{{ author.github }}{% endif %}" class="author-profile__link" aria-label="GitHub">
         <i class="fab fa-github" aria-hidden="true"></i>
       </a>
     {% endif %}
@@ -62,17 +62,17 @@
       </a>
     {% endif %}
     {% if author.linkedin %}
-      <a href="https://www.linkedin.com/in/{{ author.linkedin }}" class="author-profile__link" aria-label="LinkedIn">
+      <a href="{% if author.linkedin contains '://' %}{{ author.linkedin }}{% else %}https://www.linkedin.com/in/{{ author.linkedin }}{% endif %}" class="author-profile__link" aria-label="LinkedIn">
         <i class="fab fa-linkedin" aria-hidden="true"></i>
       </a>
     {% endif %}
     {% if author.twitter %}
-      <a href="https://twitter.com/{{ author.twitter }}" class="author-profile__link" aria-label="Twitter">
+      <a href="{% if author.twitter contains '://' %}{{ author.twitter }}{% else %}https://twitter.com/{{ author.twitter }}{% endif %}" class="author-profile__link" aria-label="Twitter">
         <i class="fab fa-twitter" aria-hidden="true"></i>
       </a>
     {% endif %}
     {% if author.youtube %}
-      <a href="https://www.youtube.com/{{ author.youtube }}" class="author-profile__link" aria-label="YouTube">
+      <a href="{% if author.youtube contains '://' %}{{ author.youtube }}{% else %}https://www.youtube.com/{{ author.youtube }}{% endif %}" class="author-profile__link" aria-label="YouTube">
         <i class="fab fa-youtube" aria-hidden="true"></i>
       </a>
     {% endif %}

@@ -111,6 +111,6 @@ I am an aerospace engineer with a passion for making drones safer and more auton
 
 ## What Drives Me
 
-- A deep-seated belief in the power of technology to improve lives
-- A thirst for intellectual exploration and charting new courses in robotics and aerospace
-- A desire to connect with fellow academics and pioneers in scientific discourse
+- **Innovation in Autonomy**: I am passionate about bridging the gap between theoretical research and real-world drone applications, focusing on making autonomous systems more reliable and resilient.
+- **Problem Solving at the Edge**: I thrive on the challenge of deploying complex AI and control algorithms on resource-constrained embedded hardware.
+- **Collaborative R&D**: I value connecting with fellow engineers and researchers to push the boundaries of what is possible in the robotics and aerospace sectors.
