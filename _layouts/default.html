@@ -15,15 +15,16 @@ layout: compress
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-DJEP54CLBL');
   </script>
-  <body>
+  <body class="layout--{{ page.layout | default: 'default' }}">
 
     {% include browser-upgrade.html %}
     {% include masthead.html %}
 
-    {{ content }}
+    <main id="main-content">
+      {{ content }}
+    </main>
 
     <div class="page__footer">
       <footer>
@@ -31,6 +32,27 @@ layout: compress
       </footer>
     </div>
 
+    <script>
+    // Scroll reveal animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const reveals = document.querySelectorAll('.reveal, .reveal-left');
+
+      function checkReveal() {
+        const windowHeight = window.innerHeight;
+        reveals.forEach(function(element) {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 100;
+
+          if (elementTop < windowHeight - elementVisible) {
+            element.classList.add('revealed');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', checkReveal);
+      checkReveal(); // Check on load
+    });
+    </script>
 
   </body>
 </html>

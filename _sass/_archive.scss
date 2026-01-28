@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ARCHIVE
+   ARCHIVE - Modern Card-Based Layout
    ========================================================================== */
 
 .archive {
@@ -10,86 +10,180 @@
   }
 
   @include breakpoint($large) {
-    @include span(10 of 12 last);
+    @include span(9 of 12 last);
     @include prefix(0.5 of 12);
   }
 
   a {
-    text-decoration: underline;
+    text-decoration: none;
+    color: inherit;
 
     &:hover {
-      text-decoration: underline;
-
-      img {
-        box-shadow: 0 0 10px rgba(#000, 0.25);
-      }
+      color: $accent-color;
     }
   }
 }
 
 .archive__subtitle {
-  margin: 1.414em 0 0;
-  padding-bottom: 0.5em;
-  font-size: $type-size-5;
-  color: mix(#fff, $gray, 25%);
-  border-bottom: 1px solid $border-color;
+  margin: 2rem 0 1rem;
+  padding-bottom: 0.75rem;
+  font-family: $header-font-family;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $primary-color;
+  border-bottom: 2px solid $accent-color;
 
   + .list__item .archive__item-title {
     margin-top: 0.5em;
   }
 }
 
+/*
+   Archive Item Card
+   ========================================================================== */
+
+.archive__item {
+  background: $background-color;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  transition: $global-transition;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: $box-shadow-hover;
+    transform: translateY(-4px);
+
+    .archive__item-title a {
+      color: $accent-color;
+    }
+  }
+}
+
+.archive__item-content {
+  padding: 1.25rem 1.5rem;
+}
+
 .archive__item-title {
-  margin-bottom: 0.25em;
-  font-family: $sans-serif-narrow;
+  font-family: $header-font-family;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: $primary-color;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: $global-transition;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
 
   a + a {
     opacity: 0.5;
   }
 }
 
-/* remove border*/
-.page__content {
+.archive__item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  color: $gray;
 
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    background: $accent-color;
+    color: white;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .venue {
+    font-style: italic;
+    color: $dark-gray;
+  }
+
+  .date {
+    color: $gray;
+
+    i {
+      margin-right: 0.25rem;
+    }
+  }
+
+  .read-time {
+    color: $gray;
+
+    i {
+      margin-right: 0.25rem;
+    }
+  }
+}
+
+.archive__item-excerpt {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: $dark-gray;
+  line-height: 1.6;
+
+  .read-more {
+    color: $accent-color;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.archive__item-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid $border-color;
+}
+
+.archive__item-teaser {
+  border-radius: $border-radius $border-radius 0 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: $global-transition;
+  }
+}
+
+.archive__item:hover {
+  .archive__item-teaser img {
+    transform: scale(1.05);
+  }
+}
+
+/* remove border in page content */
+.page__content {
   .archive__item-title {
     margin-top: 1em;
     border-bottom: none;
   }
 }
 
-.archive__item-excerpt {
-  margin-top: 0;
-  font-size: $type-size-6;
-
-  & + p {
-    text-indent: 0;
-  }
-}
-
-.archive__item-teaser {
-  border-radius: $border-radius;
-  overflow: hidden;
-  img {
-    width: 100%;
-  }
-}
-
-.archive__item:hover {
-  .archive__item-teaser {
-    box-shadow: 0 0 10px rgba(#000, 0.25);
-  }
-
-  .archive__item-title {
-    text-decoration: underline;
-  }
-}
-
-
 /*
    List view
    ========================================================================== */
 
 .list__item {
+  margin-bottom: 1.5rem;
+
   @include breakpoint($medium) {
     padding-right: $right-sidebar-width-narrow;
   }
@@ -105,6 +199,15 @@
   .page__meta {
     margin: 0 0 4px;
   }
+
+  .archive__item {
+    border-left: 4px solid $accent-color;
+    border-radius: 0 $border-radius $border-radius 0;
+
+    &:hover {
+      transform: translateX(4px);
+    }
+  }
 }
 
 
@@ -112,42 +215,55 @@
    Grid view
    ========================================================================== */
 
+.grid__wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include breakpoint($small) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint($large) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .grid__item {
-  margin-bottom: 2em;
+  margin-bottom: 0;
 
   .page__meta {
     margin: 0 0 4px;
   }
 
+  .archive__item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: none;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+
+  .archive__item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
   .archive__item-title {
-    margin-top: 0.5em;
-    font-size: $type-size-5;
+    font-size: 1rem;
   }
 
   .archive__item-excerpt {
-    display: none;
+    flex: 1;
+    font-size: 0.875rem;
   }
 
-  @include breakpoint($small) {
-    @include gallery(5 of 10);
-    .archive__item-teaser {
-      max-height: 200px;
-    }
-  }
-
-  @include breakpoint($medium) {
-    margin-left: 0; /* reset before mixin does its thing*/
-    margin-right: 0; /* reset before mixin does its thing*/
-    @include gallery(2.5 of 10);
-
-    .archive__item-teaser {
-      max-height: 120px;
-    }
-
-    .archive__item-excerpt {
-      display: block;
-      font-size: $type-size-6;
-    }
+  .archive__item-teaser {
+    max-height: 180px;
   }
 }
 
@@ -164,7 +280,7 @@
 
 .feature__item {
   margin-bottom: 2em;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
 
   @include breakpoint($small) {
     margin-bottom: 0;
@@ -178,7 +294,7 @@
 
   &--left {
     @include full();
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 
     .archive__item-teaser {
       margin-bottom: 2em;
@@ -199,7 +315,7 @@
 
   &--right {
     @include full();
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 
     .archive__item-teaser {
       margin-bottom: 2em;
@@ -222,7 +338,7 @@
 
   &--center {
     @include full();
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 
     .archive__item-teaser {
       margin-bottom: 2em;
@@ -240,6 +356,22 @@
         margin: 0 auto;
         width: span(7 of 12);
       }
+    }
+  }
+}
+
+/*
+   Publications/Projects list styles
+   ========================================================================== */
+
+.entries-list {
+  .archive__item {
+    margin-bottom: 1rem;
+    border-left: 4px solid $accent-color;
+    border-radius: 0 $border-radius $border-radius 0;
+
+    &:hover {
+      transform: translateX(4px);
     }
   }
 }

@@ -1,23 +1,23 @@
 ---
-title:  " Seeing Bayesian Optimization in Action: An Animated MATLAB Example"
+title:  "Seeing Bayesian Optimization in Action: An Animated MATLAB Example"
 date:   2024-01-14 3:20:00 +0900
-permalink: /posts/Bayesian-optimizatin-Demo/
+permalink: /posts/Bayesian-optimization-Demo/
 ---
 Bayesian optimization is an iterative process that starts with prior beliefs about the objective function to be estimated, including its smoothness and other characteristics. Over time, it collects more evidence through an acquisition function to refine its initial beliefs about the objective function.
 
 To implement the Bayesian optimization algorithm, the first step is to choose an objective function that accurately represents the system to be modeled and optimized. Typically, the Gaussian process model is employed, and it has also been utilized for this demo.
 
-## Gausian Process
-Gausian process model described with mean $(\mu (x))$ and covariance $(k(x,x'))$ functions. Then, the objecetive function represented as:
+## Gaussian Process
+A Gaussian process model is described with mean $(\mu (x))$ and covariance $(k(x,x'))$ functions. Then, the objective function is represented as:
 
 $ f(x) \sim GP(\mu(x), k(x,x'))$
 
-Initially, the mean value is assumed to be zero. When a new observation made, both the mean and the covariance will be updated using the equations of the posterior distribution function. 
+Initially, the mean value is assumed to be zero. When a new observation is made, both the mean and the covariance will be updated using the equations of the posterior distribution function. 
 
-The covarince function $k(x,x')$ also called a kernel funciton. The common kernel function to model Gaussian process is an exponential quadratic function represented as follows.
+The covariance function $k(x,x')$ is also called a kernel function. The common kernel function to model a Gaussian process is an exponential quadratic function represented as follows.
 
 $ K(X_1,X_2)=\sigma^2 \left (-\frac{||X_1 - X_2||^2}{2l^2}  \right )$ \
-Initially, the covariance fucntion computed from the hypper parameter values $\sigma$,representing the variance in the model,and $l$, which aslo represents the length scale. $X_1$ and $X_2$ are input variables for 2D search space. The covariance (kernel) fuction can be implemented in MATLAB code as given below.
+Initially, the covariance function is computed from the hyperparameter values $\sigma$, representing the variance in the model, and $l$, which also represents the length scale. $X_1$ and $X_2$ are input variables for 2D search space. The covariance (kernel) function can be implemented in MATLAB code as given below.
 
 {%highlight MATLAB %}
 % For 1-D
@@ -37,7 +37,7 @@ function f = kernel_xy(x, y, l, sigma)
 end
 {% endhighlight %}
 
-The next step involves the implementaion of acquisition function. There are number of acquistion functions. For this demo, expected improvement is selected. 
+The next step involves the implementation of the acquisition function. There are a number of acquisition functions. For this demo, expected improvement is selected. 
 
 ## Acquisition Function
 $$
@@ -52,9 +52,9 @@ $$
 where, \
      EI $\rightarrow$ expected improvement  
      $\xi$ $\rightarrow$  exploration-exploitation tradeoff parameter  
-     $\phi$ $\rightarrow$ normal probablity distribution function   
+     $\phi$ $\rightarrow$ normal probability distribution function   
      $\Phi$ $\rightarrow$ normal cumulative distribution function  
-     $\sigma$ $\rightarrow$ expected mean uncertainity  
+     $\sigma$ $\rightarrow$ expected mean uncertainty  
      $f(x^*)$ $\rightarrow$ optimum value found so far  
 
 The above equation can be written in compact form
@@ -133,7 +133,7 @@ end
 
 ### Full MATLAB Code
 
-For this demonstration, observation values are sampled from a sine function. Consequently, the objective function is expected to approximate a sine wave as the number of obsevations increases.
+For this demonstration, observation values are sampled from a sine function. Consequently, the objective function is expected to approximate a sine wave as the number of observations increases.
 
 {% highlight MATLAB %}
 
@@ -207,7 +207,7 @@ for i=1:10
     if (i==1)
         line(px2,py2,'Color','#D95319','LineStyle','-');
     end
-    title("data fitting  process with Bayessian optimization")
+    title("Data fitting process with Bayesian optimization")
     xlabel("x")
     ylabel("f(x)")
     legend("$\pm$ $\sigma(x)$ region","true function","observed points","$\mu$ (x)", ...

@@ -1,15 +1,50 @@
 {% include base_path %}
-<div class="page__footer-follow">
-  <ul class="social-icons">
-  {% if site.author.github %}
-    <li>
-      <a href="http://github.com/{{ site.author.github }}"
-        ><i class="fab fa-github" aria-hidden="true"></i> GitHub</a
-      >
-    </li>
-    {% endif %} 
-  </ul>
-</div>
-<div class="page__footer-copyright">
-  &copy; {{ site.time | date: '%Y' }} {{ site.name | default: site.title }}.
+
+<div class="footer__content">
+  <div class="footer__social">
+    {% if site.author.email %}
+    <a href="mailto:{{ site.author.email }}" class="footer__social-link" aria-label="Email">
+      <i class="fas fa-envelope" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% if site.author.github %}
+    <a href="https://github.com/{{ site.author.github }}" class="footer__social-link" aria-label="GitHub">
+      <i class="fab fa-github" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% if site.author.googlescholar %}
+    <a href="{{ site.author.googlescholar }}" class="footer__social-link" aria-label="Google Scholar">
+      <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% if site.author.linkedin %}
+    <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" class="footer__social-link" aria-label="LinkedIn">
+      <i class="fab fa-linkedin" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% if site.author.researchgate %}
+    <a href="{{ site.author.researchgate }}" class="footer__social-link" aria-label="ResearchGate">
+      <i class="fab fa-researchgate" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% if site.author.orcid %}
+    <a href="{{ site.author.orcid }}" class="footer__social-link" aria-label="ORCID">
+      <i class="fab fa-orcid" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% if site.author.twitter %}
+    <a href="https://twitter.com/{{ site.author.twitter }}" class="footer__social-link" aria-label="Twitter">
+      <i class="fab fa-twitter" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+    {% if site.author.youtube %}
+    <a href="https://www.youtube.com/{{ site.author.youtube }}" class="footer__social-link" aria-label="YouTube">
+      <i class="fab fa-youtube" aria-hidden="true"></i>
+    </a>
+    {% endif %}
+  </div>
+
+  <div class="footer__copyright">
+    &copy; {{ site.time | date: '%Y' }} {{ site.author.name | default: site.title }}. All rights reserved.
+  </div>
 </div>

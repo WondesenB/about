@@ -1,21 +1,29 @@
 /* ==========================================================================
-   MASTHEAD
+   MASTHEAD - Modern Sticky Navigation
    ========================================================================== */
 
 .masthead {
-  position: relative;
-  border-bottom: 1px solid $border-color;
-  -webkit-animation: intro 0.3s both;
-          animation: intro 0.3s both;
-  -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
-  z-index: 20;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid transparent;
+  z-index: 100;
+  transition: $global-transition;
+
+  &--scrolled {
+    border-bottom-color: $border-color;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
 
   &__inner-wrap {
     @include container;
     @include clearfix;
-    padding: 1em 1em 1em;
-    font-family: $sans-serif-narrow;
+    padding: 0.875rem 1rem;
+    font-family: $sans-serif;
 
     @include breakpoint($x-large) {
       max-width: $x-large;
@@ -32,7 +40,6 @@
 }
 
 .masthead__menu {
-
   ul {
     margin: 0;
     padding: 0;
@@ -41,13 +48,160 @@
   }
 }
 
+.greedy-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2.5rem;
+
+  .site-title {
+    font-family: $header-font-family;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $primary-color;
+    transition: $global-transition;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .visible-links {
+    display: none;
+    margin-left: auto;
+
+    @include breakpoint($medium) {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+  }
+
+  .hidden-links {
+    position: absolute;
+    top: 100%;
+    right: 1rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem 0;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-lg;
+    min-width: 180px;
+
+    &.hidden {
+      display: none;
+    }
+
+    li {
+      display: block;
+    }
+
+    a {
+      display: block;
+      padding: 0.625rem 1.25rem;
+      color: $dark-gray;
+
+      &:hover {
+        background: $lighter-gray;
+        color: $accent-color;
+      }
+    }
+  }
+}
+
 .masthead__menu-item {
-  display: block;
+  display: inline-block;
   list-style-type: none;
   white-space: nowrap;
 
-  &--lg {
-    padding-right: 2em;
-    font-weight: 700;
+  a {
+    display: block;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: $dark-gray;
+    border-radius: $border-radius;
+    transition: $global-transition;
+
+    &:hover {
+      color: $accent-color;
+      background: rgba($accent-color, 0.08);
+    }
   }
+}
+
+/* Mobile menu toggle */
+.greedy-nav__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: $global-transition;
+
+  &:hover {
+    background: $lighter-gray;
+  }
+
+  &.hidden {
+    @include breakpoint($medium) {
+      display: none;
+    }
+
+    @include breakpoint(max-width $medium) {
+      display: flex;
+    }
+  }
+
+  .navicon {
+    position: relative;
+    width: 20px;
+    height: 2px;
+    background: $dark-gray;
+    border-radius: 2px;
+    transition: $global-transition;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $dark-gray;
+      border-radius: 2px;
+      transition: $global-transition;
+    }
+
+    &::before {
+      top: -6px;
+    }
+
+    &::after {
+      top: 6px;
+    }
+  }
+}
+
+/* Visually hidden utility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Add padding to body to account for fixed header */
+body {
+  padding-top: 60px;
 }

@@ -19,6 +19,17 @@ layout: default
     {% unless page.header.overlay_color or page.header.overlay_image %}
       <h1 class="page__title">{{ page.title }}</h1>
     {% endunless %}
-    {{ content }}
+
+    <div class="archive__content animate-fade-in-up">
+      {{ content }}
+    </div>
+
+    {% if page.entries_layout == 'grid' %}
+      <div class="grid__wrapper">
+        {% for post in site.posts %}
+          {% include archive-single.html type="grid" %}
+        {% endfor %}
+      </div>
+    {% endif %}
   </div>
 </div>
